@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import TaskItem from "./components/TaskItem";
 import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 import { TodoProps } from "./components/Todo";
 
 function App() {
@@ -9,15 +10,15 @@ function App() {
   const [todos, setTodos] = useState<TodoProps[]>([]);
 
   return (
-    <div className="main">
+    <div className="container">
       <h1>To Do App</h1>
       <div className="add-task">
         <TodoForm input={input} setInput={setInput} todos={todos} setTodos={setTodos}/>
       </div>
-      <div className="task-list">
+      <div className="todo-list">
         <div className="grid-container">
-          <h3>Todo List</h3>
-          <TaskItem taskName="Task Name" checked={false} />
+          <h2>Todo List</h2>
+          <TodoList todos={todos} setTodos={setTodos} />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { TodoProps } from "./Todo";
 
@@ -11,10 +11,10 @@ export interface TodoFormProps {
 
 const TodoForm = ({ input, setInput, todos, setTodos}:TodoFormProps) => {
 
-
   const handleSubmit:React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     setTodos([...todos, { id: uuidv4(), title: input, completed: false}]);
+    setInput("");
   }
 
   const onInputChange:React.ChangeEventHandler<HTMLInputElement> = (event) => {
