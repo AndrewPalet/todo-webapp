@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import TaskItem from "./components/TaskItem";
+import TodoForm from "./components/TodoForm";
+import { TodoProps } from "./components/Todo";
 
 function App() {
+  const [input, setInput] = useState('');
+  const [todos, setTodos] = useState<TodoProps[]>([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <h1>To Do App</h1>
+      <div className="add-task">
+        <TodoForm input={input} setInput={setInput} todos={todos} setTodos={setTodos}/>
+      </div>
+      <div className="task-list">
+        <div className="grid-container">
+          <h3>Todo List</h3>
+          <TaskItem taskName="Task Name" checked={false} />
+        </div>
+      </div>
     </div>
   );
 }
